@@ -44,10 +44,14 @@
 			function onMouseUp(event) {
         var mouseUpPoint = event.layerPoint;
         var mouseMoved = mouseUpPoint.distanceTo(mouseDownPoint) > 5;
+		var phi = 0;
+		var g = 0;
 
         if (!mouseMoved) {
           var latlng = event.latlng;
           var marker = L.marker(latlng,{elevation: 260.0, title : "Vous habitez ici ? "+ "\n"+"Lat : "+latlng.lat+"\n"+"Long : "+latlng.lng}).addTo(vaud);
+		  phi = latlng.lat;
+		  g = latlng.lng;
 		  
 		  mapMarkers.push(marker);
 		}
@@ -61,8 +65,8 @@
             };
 			function afficher(){
 		document.write("<div> Coordonnées : </div>");
-		document.write("<p> + latlng.lat + </p>");
-		document.write("<p> + latlng.long + </p>");
+		document.write("<p>" + phi + "</p>");
+		document.write("<p>" + g + "</p>");
 		};
 </script>
 <button onclick='afficher()'>Coordonnées</button>
