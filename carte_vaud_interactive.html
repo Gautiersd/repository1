@@ -61,15 +61,9 @@
             };
 
         </script>
-	<form method="post" action="test.php">
-  <p class="titre">Vous habitez ici ?</p>
-  <fieldset id="coordonnees">
-  <input id="latitude" name="Latitude" type="hidden" value=latlng.lat>
-  <input id="longitude" name="Longitude" type="hidden" value=latlng.long>
-  <p id="buttons">
-  <input type="submit" value="Oui, je valide cette adresse" />
-  <input type="reset" value="Non, je recommence" />
-</p>
-	</form>
+<input type ="button" name="valider" value="Valider" onclick=
+style="background-color:#3cb371" style="color:white; font-weight:bold"onclick>
+<input type ="button" name="recommencer" value="Recommencer" onclick="self.location.href="http://localhost/redcap/surveys/?s=EZUwX9v8cU"
+style="background-color:#3cb371" style="color:white; font-weight:bold"onclick>
     </body>
 </html>
