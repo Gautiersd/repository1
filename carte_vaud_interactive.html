@@ -43,16 +43,13 @@
       };
 			function onMouseUp(event) {
         var mouseUpPoint = event.layerPoint;
-        var mouseMoved = mouseUpPoint.distanceTo(mouseDownPoint) > 5;
+        var mouseMoved = mouseUpPoint.distanceTo(mouseDownPoint) > 10;
 		var phi = 0;
 		var g = 0;
 
         if (!mouseMoved) {
           var latlng = event.latlng;
           var marker = L.marker(latlng,{elevation: 260.0, title : "Vous habitez ici ? "+ "\n"+"Lat : "+latlng.lat+"\n"+"Long : "+latlng.lng}).addTo(vaud);
-		  phi = latlng.lat;
-		  g = latlng.lng;
-		  
 		  mapMarkers.push(marker);
 		}
 		if (mapMarkers.length>1){
@@ -64,12 +61,7 @@
       vaud.on("mouseup", onMouseUp);
             };
 			function afficher(){
-		var nphi = phi.prototype.toString();
-		var ng = g.prototype.toString();
-		document.write("<div> Coordonnées : </div>");
-		document.write("<p>" + nphi + "</p>");
-		document.write("<p>" + ng + "</p>");
-		};
+		alert("Coordonnées :");};
 </script>
 <button onclick='afficher()'>Coordonnées</button>
     </body>
