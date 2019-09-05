@@ -20,6 +20,12 @@
             var lat = 46.52423;
             var lon = 6.58618;
             var vaud = null;
+			var phi = new Number();
+			var g = new Number();
+			var phiprime = new Number();
+			var gprime = new Number();
+			var x = new Number();
+			var y = new Number();
 			var i = 0;
             // Fonction d'initialisation de la carte
             function initMap() {
@@ -43,14 +49,20 @@
       };
 			function onMouseUp(event) {
         var mouseUpPoint = event.layerPoint;
-        var mouseMoved = mouseUpPoint.distanceTo(mouseDownPoint) > 10;
-		var phi = 0;
-		var g = 0;
-
+        var mouseMoved = mouseUpPoint.distanceTo(mouseDownPoint) > 5;
+		
         if (!mouseMoved) {
           var latlng = event.latlng;
           var marker = L.marker(latlng,{elevation: 260.0, title : "Vous habitez ici ? "+ "\n"+"Lat : "+latlng.lat+"\n"+"Long : "+latlng.lng}).addTo(vaud);
 		  mapMarkers.push(marker);
+		  phi = latlng.lat;
+		  g = latlng.lng;
+		  phi = phi*3600;
+		g = g*3600;
+		phiprime = (phi-169028.66)/10000;
+		gprime = (g-26782.5)/10000;
+		y = (2600072.37+(211455.93*gprime)-(10938.51*gprime*phiprime)-(0.36*gprime*phiprime*phiprime)-(44.54*gprime*gprime*gprime))-2000000;
+		x = (1200147.07+(308807.95*phiprime)+(3745.25*gprime*gprime)+(76.63*phiprime*phiprime)-(194.56*gprime*gprime*phiprime)+(119.79*phiprime*phiprime*phiprime))-1000000;
 		}
 		if (mapMarkers.length>1){
 		vaud.removeLayer(mapMarkers[i]);
@@ -60,8 +72,9 @@
       vaud.on("mousedown", onMouseDown);
       vaud.on("mouseup", onMouseUp);
             };
+		
 			function afficher(){
-		alert("Coordonnées :");};
+		alert("Coordonnées :" + "\n"+"X : "+x+"\n"+"Y : "+y );};
 </script>
 <button onclick='afficher()'>Coordonnées</button>
     </body>
