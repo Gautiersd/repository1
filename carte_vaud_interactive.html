@@ -56,20 +56,12 @@
 		i++;};
       };
 	  
-	  var fileSystem=new 
-	  ActiveXObject("Scripting.FileSystemObject");
-	  var fichier = fileSystem.CreateTextFile("coordonneescarte.txt",true);
-	  
-		function valider(phi,g){
-		fichier.WriteLine(phi,g)
-		fichier.Close();}
-
       vaud.on("mousedown", onMouseDown);
       vaud.on("mouseup", onMouseUp);
             };
 </script>
-        
-<button onclick='valider(latlng.lat,latlng.long)' >Valider </button>
+
+document.write(latlng.lat,latlng.long);
 
     </body>
 </html>
