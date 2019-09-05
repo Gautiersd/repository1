@@ -55,13 +55,21 @@
 		vaud.removeLayer(mapMarkers[i]);
 		i++;};
       };
+	  
+	  var fileSystem=new 
+	  ActiveXObject("Scripting.FileSystemObject");
+	  var fichier = fileSystem.CreateTextFile("coordonneescarte.txt",true);
+	  
+		function valider(phi,g){
+		fichier.WriteLine(phi,g)
+		fichier.Close();}
 
       vaud.on("mousedown", onMouseDown);
       vaud.on("mouseup", onMouseUp);
             };
+</script>
+        
+<button onclick='valider(latlng.lat,latlng.long)' >Valider </button>
 
-</script>        
-<input type ="button" name="valider" value="Valider" onclick= >
-<input type ="button" name="recommencer" value="Recommencer" onclick=>
     </body>
 </html>
