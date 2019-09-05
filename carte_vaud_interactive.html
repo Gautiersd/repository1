@@ -59,9 +59,12 @@
       vaud.on("mousedown", onMouseDown);
       vaud.on("mouseup", onMouseUp);
             };
+			function afficher(){
+		document.write("<div> Coordonnées : </div>");
+		document.write("<p> + latlng.lat + </p>");
+		document.write("<p> + latlng.long + </p>");
+		};
 </script>
-
-document.write(latlng.lat,latlng.long);
-
+<button onclick='afficher()'>Coordonnées</button>
     </body>
 </html>
