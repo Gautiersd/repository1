@@ -49,7 +49,7 @@
       };
 			function onMouseUp(event) {
         var mouseUpPoint = event.layerPoint;
-        var mouseMoved = mouseUpPoint.distanceTo(mouseDownPoint) > 5;
+        var mouseMoved = mouseUpPoint.distanceTo(mouseDownPoint) > 10;
 		
         if (!mouseMoved) {
           var latlng = event.latlng;
