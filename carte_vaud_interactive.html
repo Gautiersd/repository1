@@ -27,6 +27,16 @@
 			var x = new Number();
 			var y = new Number();
 			var i = 0;
+				function convertir(lat,lng){
+		phi = lat;
+		g = lng;
+		phi = phi*3600;
+		g = g*3600;
+		phiprime = (phi-169028.66)/10000;
+		gprime = (g-26782.5)/10000;
+		y = (2600072.37+(211455.93*gprime)-(10938.51*gprime*phiprime)-(0.36*gprime*phiprime*phiprime)-(44.54*gprime*gprime*gprime))-2000000;
+		x = (1200147.07+(308807.95*phiprime)+(3745.25*gprime*gprime)+(76.63*phiprime*phiprime)-(194.56*gprime*gprime*phiprime)+(119.79*phiprime*phiprime*phiprime))-1000000;
+		}
             // Fonction d'initialisation de la carte
             function initMap() {
                 // Crée l'objet "vaud" et l'insèrer dans l'élément HTML qui a l'ID "map"
@@ -56,22 +66,22 @@
           var marker = L.marker(latlng,{draggable:'true'}).addTo(vaud);
 		  mapMarkers.push(marker);
 		  //RECUPERATION ET CONVERSION EN CH 1903
-		  phi = latlng.lat;
-		  g = latlng.lng;
-		  phi = phi*3600;
-		g = g*3600;
-		phiprime = (phi-169028.66)/10000;
-		gprime = (g-26782.5)/10000;
-		y = (2600072.37+(211455.93*gprime)-(10938.51*gprime*phiprime)-(0.36*gprime*phiprime*phiprime)-(44.54*gprime*gprime*gprime))-2000000;
-		x = (1200147.07+(308807.95*phiprime)+(3745.25*gprime*gprime)+(76.63*phiprime*phiprime)-(194.56*gprime*gprime*phiprime)+(119.79*phiprime*phiprime*phiprime))-1000000;
-		}
+		  convertir(latlng.lat,latlng.lng);
+		};
+		
 		if (mapMarkers.length>1){
 		vaud.removeLayer(mapMarkers[i]);
 		i++;};
       };
 	  
+			function markerMove (event) {
+		var latlng = event.latlng;
+		convertir(latlng.lat,latlng.lng);
+		};
+		
       vaud.on("mousedown", onMouseDown);
       vaud.on("mouseup", onMouseUp);
+	  mapMarkers[i].on("moveend", markerMove);
             };
 
 			function afficher(){
