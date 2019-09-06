@@ -49,12 +49,13 @@
       };
 			function onMouseUp(event) {
         var mouseUpPoint = event.layerPoint;
-        var mouseMoved = mouseUpPoint.distanceTo(mouseDownPoint) > 10;
+        var mouseMoved = mouseUpPoint.distanceTo(mouseDownPoint) > 5;
 		
         if (!mouseMoved) {
           var latlng = event.latlng;
-          var marker = L.marker(latlng,{elevation: 260.0, title : "Vous habitez ici ? "+ "\n"+"Lat : "+latlng.lat+"\n"+"Long : "+latlng.lng}).addTo(vaud);
+          var marker = L.marker(latlng,{draggable:'true'}).addTo(vaud);
 		  mapMarkers.push(marker);
+		  //RECUPERATION ET CONVERSION EN CH 1903
 		  phi = latlng.lat;
 		  g = latlng.lng;
 		  phi = phi*3600;
@@ -72,7 +73,7 @@
       vaud.on("mousedown", onMouseDown);
       vaud.on("mouseup", onMouseUp);
             };
-		
+
 			function afficher(){
 		alert("Coordonnées :" + "\n"+"X : "+x+"\n"+"Y : "+y );};
 </script>
